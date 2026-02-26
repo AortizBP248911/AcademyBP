@@ -14,7 +14,10 @@
   },
   "dependencies": {
     "@auth/prisma-adapter": "^2.11.1",
+    "@aws-sdk/client-s3": "^3.998.0",
+    "@aws-sdk/lib-storage": "^3.998.0",
     "@phosphor-icons/react": "^2.1.10",
+    "@prisma/client": "^5.22.0",
     "@radix-ui/react-dialog": "^1.1.15",
     "@radix-ui/react-label": "^2.1.8",
     "@radix-ui/react-select": "^2.2.6",
@@ -35,8 +38,7 @@
     "sonner": "^2.0.7",
     "tailwind-merge": "^3.5.0",
     "tailwindcss": "^4.0.0",
-    "zod": "^4.3.6",
-    "@prisma/client": "^5.22.0"
+    "zod": "^4.3.6"
   },
   "devDependencies": {
     "@tailwindcss/postcss": "^4.0.0",
@@ -46,7 +48,7 @@
     "eslint": "^9.17.0",
     "eslint-config-next": "16.1.6",
     "prisma": "^5.22.0",
-    "typescript": "^5.7.2",
-    "tsx": "^4.19.2"
+    "tsx": "^4.19.2",
+    "typescript": "^5.7.2"
   }
 }
