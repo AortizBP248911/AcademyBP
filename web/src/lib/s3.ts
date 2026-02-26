@@ -16,7 +16,13 @@ export async function uploadToS3(file: File, folderPath: string): Promise<string
   try {
     const arrayBuffer = await file.arrayBuffer();
     const buffer = Buffer.from(arrayBuffer);
-    const key = `${folderPath}/${file.name}`;
+    
+    // Sanitize file name: remove special chars and replace spaces with hyphens
+    const sanitizedFileName = file.name
+      .replace(/[^a-zA-Z0-9.-]/g, "-")
+      .replace(/-+/g, "-");
+      
+    const key = `${folderPath}/${sanitizedFileName}`;
     
     const command = new PutObjectCommand({
       Bucket: bucket,
