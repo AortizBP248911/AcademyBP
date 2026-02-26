@@ -117,6 +117,7 @@ export async function deleteCourse(courseId: string, password: string) {
     revalidatePath("/admin/courses")
     return { success: true, message: "Curso eliminado" }
   } catch (e) {
+    console.error("Error deleting course:", e)
     return { error: "Error al eliminar curso" }
   }
 }

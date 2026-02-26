@@ -3,16 +3,13 @@
   "version": "1.0.0",
   "private": true,
   "scripts": {
-    "dev": "npm run dev --prefix web",
-    "build": "npm run build --prefix web",
-    "start": "npm run start --prefix web",
-    "lint": "npm run lint --prefix web",
-    "email:dev": "npm run dev --prefix emails",
-    "email:build": "npm run build --prefix emails",
-    "postinstall": "npm install --prefix web && npm install --prefix emails"
+    "dev": "pnpm --filter web dev",
+    "build": "pnpm --filter web build",
+    "start": "pnpm --filter web start",
+    "lint": "pnpm --filter web lint",
+    "email:dev": "pnpm --filter emails dev",
+    "email:build": "pnpm --filter emails build"
   },
   "dependencies": {
-    "@prisma/client": "^7.4.1",
-    "cloudinary": "^2.9.0"
   }
 }

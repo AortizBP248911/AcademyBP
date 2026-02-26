@@ -46,7 +46,10 @@ export default function DeleteButtonWithConfirmation({
     <>
       <button 
         type="button"
-        onClick={() => setIsOpen(true)}
+        onClick={(e) => {
+          e.stopPropagation()
+          setIsOpen(true)
+        }}
         className="p-2 text-gray-500 hover:text-red-600 transition-colors rounded-full hover:bg-red-50"
         title="Eliminar"
       >
@@ -54,7 +57,10 @@ export default function DeleteButtonWithConfirmation({
       </button>
 
       {isOpen && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 backdrop-blur-sm p-4">
+        <div 
+          className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 backdrop-blur-sm p-4"
+          onClick={(e) => e.stopPropagation()}
+        >
           <div className="w-full max-w-md bg-white rounded-lg shadow-xl overflow-hidden animate-in fade-in zoom-in-95 duration-200">
             <div className="p-6">
               <div className="flex items-center gap-4 mb-4 text-red-600">
