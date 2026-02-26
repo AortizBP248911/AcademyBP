@@ -1,0 +1,11 @@
+{
+  "name": "emails",
+  "version": "1.0.0",
+  "scripts": {
+    "build": "maizzle build production",
+    "dev": "maizzle serve"
+  },
+  "dependencies": {
+    "@maizzle/framework": "^4.0.0"
+  }
+}

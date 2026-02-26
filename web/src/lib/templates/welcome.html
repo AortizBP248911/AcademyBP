@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Bienvenido a BP Academy</title>
+  <style>
+    body { font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; line-height: 1.6; color: #333; background-color: #f9f9f9; margin: 0; padding: 0; }
+    .wrapper { width: 100%; background-color: #f9f9f9; padding: 40px 0; }
+    .container { max-width: 600px; margin: 0 auto; background-color: #ffffff; padding: 40px; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.05); }
+    .logo { text-align: center; margin-bottom: 30px; }
+    .logo img { max-width: 40px; height: auto; }
+    h1 { color: #111; font-size: 24px; margin-bottom: 20px; text-align: center; font-weight: 700; }
+    p { margin-bottom: 16px; font-size: 16px; color: #555; }
+    .credentials-box { background-color: #f3f4f6; border-radius: 6px; padding: 20px; margin: 24px 0; border: 1px solid #e5e7eb; }
+    .credential-item { margin-bottom: 10px; }
+    .credential-item:last-child { margin-bottom: 0; }
+    .credential-label { font-weight: 600; color: #333; font-size: 14px; text-transform: uppercase; letter-spacing: 0.5px; }
+    .credential-value { font-family: monospace; font-size: 16px; color: #111; background: #fff; padding: 4px 8px; border-radius: 4px; border: 1px solid #ddd; display: inline-block; margin-top: 4px; }
+    .btn-container { text-align: center; margin-top: 32px; margin-bottom: 32px; }
+    .btn { display: inline-block; padding: 14px 32px; background-color: #000000; color: #ffffff !important; text-decoration: none; border-radius: 6px; font-weight: 600; font-size: 16px; transition: background-color 0.2s; }
+    .btn:hover { background-color: #333333; }
+    .footer { margin-top: 40px; text-align: center; font-size: 12px; color: #999; border-top: 1px solid #eee; padding-top: 20px; }
+    .footer p { font-size: 12px; color: #999; margin-bottom: 8px; }
+  </style>
+</head>
+<body>
+  <div class="wrapper">
+    <div class="container">
+      <div class="logo">
+        <img src="{{ page.logoUrl }}" alt="BP Academy Logo" width="50" style="display: block; width: 50px; max-width: 50px; height: auto; margin: 0 auto;">
+      </div>
+      
+      <h1>¡Bienvenido a BP Academy!</h1>
+      
+      <p>Hola {{ page.name }},</p>
+      
+      <p>Tu cuenta ha sido creada exitosamente. Estamos encantados de darte la bienvenida a nuestra plataforma de aprendizaje.</p>
+      
+      <p>A continuación encontrarás tus credenciales de acceso. Por favor, guárdalas en un lugar seguro.</p>
+      
+      <div class="credentials-box">
+        <div class="credential-item">
+          <div class="credential-label">Correo Electrónico</div>
+          <div class="credential-value">{{ page.email }}</div>
+        </div>
+        <div class="credential-item">
+          <div class="credential-label">Contraseña de Acceso</div>
+          <div class="credential-value">{{ page.password }}</div>
+        </div>
+      </div>
+      
+      <p>Para comenzar, haz clic en el botón de abajo e inicia sesión con estas credenciales.</p>
+      
+      <div class="btn-container">
+        <a href="{{ page.loginUrl }}" class="btn">Acceder a la Plataforma</a>
+      </div>
+      
+      <p style="font-size: 14px; color: #777;">Si tienes problemas para acceder, por favor contacta a tu administrador.</p>
+      
+      <div class="footer">
+        <p>&copy; 2026 BP Academy. Todos los derechos reservados.</p>
+        <p>Este es un correo automático, por favor no respondas a este mensaje.</p>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
