@@ -3,8 +3,9 @@
 import { uploadAttachment, deleteAttachment } from "@/actions/attachments"
 import { Attachment } from "@/generated/client"
 import { useFormStatus } from "react-dom"
-import { useActionState } from "react"
+import { useActionState, useTransition } from "react"
 import { CircleNotch, UploadSimple, File, Trash } from "@phosphor-icons/react"
+import DeleteButtonWithConfirmation from "@/components/delete-button-with-confirmation"
 
 const initialState = {
   message: "",
@@ -50,14 +51,14 @@ export default function AttachmentList({ lessonId, courseId, attachments }: Atta
                 {file.name}
               </a>
             </div>
-            <button
-              onClick={() => deleteAttachment(file.id, courseId, lessonId)}
-              className="text-gray-600 hover:text-red-500 transition-colors"
-              aria-label="Eliminar adjunto"
-              title="Eliminar adjunto"
-            >
-              <Trash size={18} />
-            </button>
+            <DeleteButtonWithConfirmation
+              onDelete={async () => {
+                await deleteAttachment(file.id, courseId, lessonId)
+                return { success: true }
+              }}
+              description="Esta acción eliminará el archivo adjunto permanentemente."
+              confirmationText="¿Eliminar adjunto?"
+            />
           </div>
         ))}
         {attachments.length === 0 && (
