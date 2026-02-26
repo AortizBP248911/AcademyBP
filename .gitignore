@@ -56,3 +56,6 @@ pnpm-debug.log*
 # Maizzle
 /emails/build_production/
 /emails/build_local/
+
+.vercel
+.env*.local
