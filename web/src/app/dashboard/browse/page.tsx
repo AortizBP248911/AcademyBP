@@ -47,7 +47,6 @@ export default async function BrowsePage() {
 
                 <div className="flex items-center justify-between text-xs text-gray-700 font-medium pt-2 border-t border-gray-100 mt-auto">
                     <span>{course._count.lessons} Lecciones</span>
-                    <span>{course.price ? `$${course.price}` : "Gratis"}</span>
                 </div>
                 
                 <div className="pt-2">

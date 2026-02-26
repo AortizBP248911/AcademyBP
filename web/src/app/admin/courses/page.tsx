@@ -68,9 +68,6 @@ export default async function CoursesPage() {
                 <span className="flex items-center gap-1">
                    {course._count.lessons} Lecciones
                 </span>
-                <span className="font-medium text-black">
-                  {course.price ? `$${course.price}` : "Gratis"}
-                </span>
               </div>
               <CourseActions courseId={course.id} />
             </div>

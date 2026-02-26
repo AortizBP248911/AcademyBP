@@ -51,7 +51,6 @@ async function main() {
             slug: courseSlug,
             categoryId: category.id,
             isPublished: true,
-            price: 0,
             lessons: {
                 create: [
                     {

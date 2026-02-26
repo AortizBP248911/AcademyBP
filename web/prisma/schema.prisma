@@ -75,7 +75,6 @@ model Course {
   slug        String   @unique
   imageUrl    String?
   isPublished Boolean  @default(false)
-  price       Float?   @default(0)
   categoryId  String?
   category    Category? @relation(fields: [categoryId], references: [id])
   lessons     Lesson[]

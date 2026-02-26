@@ -81,7 +81,6 @@ export async function updateCourse(courseId: string, prevState: any, formData: F
   const data: any = {
     title: formData.get("title") as string,
     description: formData.get("description") as string,
-    price: formData.get("price") ? parseFloat(formData.get("price") as string) : null,
     categoryId,
     isPublished: formData.get("isPublished") === "on",
   }

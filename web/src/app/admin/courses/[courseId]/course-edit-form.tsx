@@ -61,7 +61,7 @@ export default function CourseEditForm({ course, categories }: CourseEditFormPro
           />
         </div>
 
-        <div className="grid grid-cols-2 gap-4">
+        <div className="grid grid-cols-1 gap-4">
           <div className="space-y-2">
             <label htmlFor="categoryId" className="text-sm font-medium text-gray-900">Categoría</label>
             <select 
@@ -75,18 +75,6 @@ export default function CourseEditForm({ course, categories }: CourseEditFormPro
                 <option key={c.id} value={c.id}>{c.name}</option>
               ))}
             </select>
-          </div>
-          
-          <div className="space-y-2">
-            <label htmlFor="price" className="text-sm font-medium text-gray-900">Precio ($)</label>
-            <input 
-              id="price" 
-              name="price" 
-              type="number" 
-              step="0.01"
-              defaultValue={course.price || ""} 
-              className="flex h-10 w-full rounded-md border border-gray-300 bg-white px-3 py-2 text-sm text-gray-900 focus-visible:ring-2 focus-visible:ring-black placeholder:text-gray-600" 
-            />
           </div>
         </div>
 
