@@ -4,7 +4,7 @@ import { updateUser } from "@/actions/users"
 import { useFormStatus } from "react-dom"
 import { useActionState } from "react"
 import { CircleNotch, FloppyDisk } from "@phosphor-icons/react"
-import { User } from "@prisma/client"
+import { User } from "@/generated/client"
 
 const initialState = {
   message: "",

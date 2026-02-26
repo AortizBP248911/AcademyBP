@@ -74,9 +74,22 @@ export default async function CoursePlayerPage({
         <div className="lg:col-span-3 space-y-6 overflow-y-auto pr-2">
             {activeLesson ? (
             <>
-                <div className="aspect-video bg-black rounded-lg overflow-hidden shadow-lg border border-gray-800">
-                    <VideoPlayer url={activeLesson.videoUrl || ""} />
-                </div>
+                {activeLesson.showImage && activeLesson.imageUrl && (
+                    <div className="aspect-video bg-black rounded-lg overflow-hidden shadow-lg border border-gray-800 mb-6 relative">
+                         {/* eslint-disable-next-line @next/next/no-img-element */}
+                        <img 
+                            src={activeLesson.imageUrl} 
+                            alt={activeLesson.title} 
+                            className="w-full h-full object-contain"
+                        />
+                    </div>
+                )}
+
+                {activeLesson.videoUrl && (
+                    <div className="aspect-video bg-black rounded-lg overflow-hidden shadow-lg border border-gray-800">
+                        <VideoPlayer url={activeLesson.videoUrl} />
+                    </div>
+                )}
                 <div className="space-y-6 pb-10">
                     <div className="flex items-start justify-between gap-4">
                         <div>

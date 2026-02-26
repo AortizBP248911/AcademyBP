@@ -1,5 +1,6 @@
 generator client {
   provider = "prisma-client-js"
+  output   = "../src/generated/client"
 }
 
 datasource db {
@@ -90,6 +91,8 @@ model Lesson {
   slug        String
   description String?
   videoUrl    String?
+  imageUrl    String?
+  showImage   Boolean  @default(false)
   isPublished Boolean  @default(false)
   position    Int
   courseId    String

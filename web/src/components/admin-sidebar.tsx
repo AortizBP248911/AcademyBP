@@ -17,9 +17,9 @@ import Image from "next/image"
 
 const navItems = [
   { name: "Panel", href: "/admin", icon: SquaresFour },
+  { name: "Categorías", href: "/admin/categories", icon: Files },
   { name: "Cursos", href: "/admin/courses", icon: ChalkboardTeacher },
   { name: "Inscripciones", href: "/admin/enrollments", icon: Users },
-  { name: "Categorías", href: "/admin/categories", icon: Files },
   { name: "Usuarios", href: "/admin/users", icon: Users },
   { name: "Logros", href: "/admin/achievements", icon: Trophy },
 ]

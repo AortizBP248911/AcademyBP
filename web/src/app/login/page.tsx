@@ -7,7 +7,11 @@ export const metadata: Metadata = {
   description: "Ingresa a tu cuenta",
 }
 
+import { getVersion } from "@/lib/version"
+
 export default function LoginPage() {
+  const version = getVersion()
+
   return (
     <div className="container relative h-screen flex-col items-center justify-center md:grid lg:max-w-none lg:grid-cols-2 lg:px-0">
       <div className="relative hidden h-full flex-col bg-muted p-10 text-white dark:border-r lg:flex">
@@ -33,6 +37,10 @@ export default function LoginPage() {
             </p>
             <footer className="text-sm">Equipo BP Academy</footer>
           </blockquote>
+        </div>
+        {/* Version Watermark */}
+        <div className="absolute bottom-4 left-4 z-20 text-xs text-gray-500 opacity-50 font-mono">
+            v{version}
         </div>
       </div>
       <div className="lg:p-8 h-full flex items-center justify-center bg-zinc-950">

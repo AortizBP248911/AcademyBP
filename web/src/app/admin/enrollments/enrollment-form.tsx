@@ -3,8 +3,8 @@
 import { createEnrollment, deleteEnrollment } from "@/actions/enrollments"
 import { useFormStatus } from "react-dom"
 import { useActionState } from "react"
-import { CircleNotch, Plus, Trash } from "@phosphor-icons/react"
-import { User, Course } from "@prisma/client"
+import { CircleNotch, Plus, Trash, UserPlus } from "@phosphor-icons/react"
+import { User, Course } from "@/generated/client"
 
 const initialState = {
   message: "",
@@ -38,8 +38,11 @@ export default function EnrollmentForm({ users, courses }: EnrollmentFormProps) 
   return (
     <div className="rounded-lg border bg-white shadow-sm sticky top-6">
       <div className="flex flex-col space-y-1.5 p-6 border-b bg-gray-50/50">
-        <h3 className="text-lg font-semibold leading-none tracking-tight text-black">Nueva Inscripción</h3>
-        <p className="text-sm text-gray-600">Asignar un curso a un estudiante.</p>
+        <div className="flex items-center gap-2">
+            <UserPlus size={20} className="text-black" />
+            <h3 className="text-lg font-semibold leading-none tracking-tight text-black">Nueva Inscripción</h3>
+        </div>
+        <p className="text-sm text-gray-600 pl-7">Asignar un curso a un estudiante.</p>
       </div>
       <div className="p-6">
         <form action={formAction} className="space-y-4">

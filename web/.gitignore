@@ -40,6 +40,9 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+prod-data.json
+scripts/export-data.ts
+scripts/import-data.ts
 
 .vercel
 .env*.local

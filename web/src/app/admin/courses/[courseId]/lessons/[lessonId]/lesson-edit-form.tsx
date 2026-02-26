@@ -1,7 +1,7 @@
 "use client"
 
 import { updateLesson } from "@/actions/lessons"
-import { Lesson } from "@prisma/client"
+import { Lesson } from "@/generated/client"
 import { useFormStatus } from "react-dom"
 import { useActionState } from "react"
 import { CircleNotch, FloppyDisk } from "@phosphor-icons/react"
@@ -67,6 +67,24 @@ export default function LessonEditForm({ lesson }: { lesson: Lesson }) {
             />
         </div>
 
+        <div className="space-y-2">
+            <label htmlFor="image" className="text-sm font-medium text-gray-900">Imagen de la Lección</label>
+            {lesson.imageUrl && (
+              <div className="relative aspect-video w-full max-w-sm rounded-md overflow-hidden border border-gray-200 mb-2">
+                 {/* eslint-disable-next-line @next/next/no-img-element */}
+                 <img src={lesson.imageUrl} alt={lesson.title} className="object-cover w-full h-full" />
+              </div>
+            )}
+            <input 
+              id="image" 
+              name="image" 
+              type="file"
+              accept="image/*"
+              className="flex h-10 w-full rounded-md border border-gray-300 bg-white px-3 py-2 text-sm text-gray-900 file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold file:bg-black file:text-white hover:file:bg-black/90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-black disabled:cursor-not-allowed disabled:opacity-50" 
+            />
+            <p className="text-xs text-gray-600">Sube una nueva imagen para reemplazar la actual.</p>
+        </div>
+
         <div className="flex gap-6 pt-2">
           <div className="flex items-center space-x-2">
             <input 
@@ -78,6 +96,19 @@ export default function LessonEditForm({ lesson }: { lesson: Lesson }) {
             />
             <label htmlFor="isPublished" className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70 text-gray-900">
               Publicar
+            </label>
+          </div>
+          
+          <div className="flex items-center space-x-2">
+            <input 
+              type="checkbox" 
+              id="showImage" 
+              name="showImage" 
+              defaultChecked={lesson.showImage}
+              className="h-4 w-4 rounded border-gray-300 text-black focus:ring-black"
+            />
+            <label htmlFor="showImage" className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70 text-gray-900">
+              Mostrar Imagen
             </label>
           </div>
         </div>

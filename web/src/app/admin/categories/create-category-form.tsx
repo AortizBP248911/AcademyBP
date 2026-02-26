@@ -3,7 +3,7 @@
 import { createCategory } from "@/actions/categories"
 import { useFormStatus } from "react-dom"
 import { useActionState } from "react"
-import { CircleNotch } from "@phosphor-icons/react"
+import { CircleNotch, PlusCircle } from "@phosphor-icons/react"
 
 const initialState = {
   message: "",
@@ -32,8 +32,11 @@ export default function CreateCategoryForm() {
   return (
     <div className="rounded-lg border bg-white shadow-sm sticky top-6">
       <div className="flex flex-col space-y-1.5 p-6 border-b bg-gray-50/50">
-        <h3 className="text-lg font-semibold leading-none tracking-tight text-black">Añadir Nueva Categoría</h3>
-        <p className="text-sm text-gray-600">Crea una categoría para organizar los cursos.</p>
+        <div className="flex items-center gap-2">
+            <PlusCircle size={20} className="text-black" />
+            <h3 className="text-lg font-semibold leading-none tracking-tight text-black">Añadir Nueva Categoría</h3>
+        </div>
+        <p className="text-sm text-gray-600 pl-7">Crea una categoría para organizar los cursos.</p>
       </div>
       <div className="p-6">
         <form action={formAction} className="space-y-4">

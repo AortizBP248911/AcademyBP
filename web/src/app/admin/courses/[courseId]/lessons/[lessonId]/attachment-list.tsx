@@ -1,7 +1,7 @@
 "use client"
 
 import { uploadAttachment, deleteAttachment } from "@/actions/attachments"
-import { Attachment } from "@prisma/client"
+import { Attachment } from "@/generated/client"
 import { useFormStatus } from "react-dom"
 import { useActionState } from "react"
 import { CircleNotch, UploadSimple, File, Trash } from "@phosphor-icons/react"

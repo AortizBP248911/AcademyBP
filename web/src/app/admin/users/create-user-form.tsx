@@ -3,7 +3,7 @@
 import { createUser } from "@/actions/users"
 import { useFormStatus } from "react-dom"
 import { useActionState } from "react"
-import { CircleNotch } from "@phosphor-icons/react"
+import { CircleNotch, UserPlus } from "@phosphor-icons/react"
 
 const initialState = {
   message: "",
@@ -32,8 +32,11 @@ export default function CreateUserForm() {
   return (
     <div className="rounded-lg border bg-white shadow-sm sticky top-6">
       <div className="flex flex-col space-y-1.5 p-6 border-b bg-gray-50/50">
-        <h3 className="text-lg font-semibold leading-none tracking-tight text-black">Agregar Nuevo Usuario</h3>
-        <p className="text-sm text-gray-600">Crear un nuevo usuario y enviarle un correo.</p>
+        <div className="flex items-center gap-2">
+            <UserPlus size={20} className="text-black" />
+            <h3 className="text-lg font-semibold leading-none tracking-tight text-black">Agregar Nuevo Usuario</h3>
+        </div>
+        <p className="text-sm text-gray-600 pl-7">Crear un nuevo usuario y enviarle un correo.</p>
       </div>
       <div className="p-6">
         <form action={formAction} className="space-y-4">

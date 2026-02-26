@@ -4,7 +4,7 @@ import { updateCourse } from "@/actions/courses"
 import { useFormStatus } from "react-dom"
 import { useActionState } from "react"
 import { CircleNotch, FloppyDisk } from "@phosphor-icons/react"
-import { Category, Course } from "@prisma/client"
+import { Category, Course } from "@/generated/client"
 
 const initialState = {
   message: "",

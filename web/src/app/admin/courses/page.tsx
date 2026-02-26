@@ -2,7 +2,7 @@ import { prisma } from "@/lib/prisma"
 import CreateCourseForm from "./create-course-form"
 import Link from "next/link"
 import Image from "next/image"
-import { BookOpen } from "@phosphor-icons/react/dist/ssr"
+import { BookOpen, ChalkboardTeacher } from "@phosphor-icons/react/dist/ssr"
 import { CourseActions } from "./course-actions"
 
 export default async function CoursesPage() {
@@ -19,7 +19,15 @@ export default async function CoursesPage() {
   return (
     <div className="space-y-6">
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
-        <h1 className="text-2xl font-bold tracking-tight text-black">Cursos</h1>
+        <div className="flex items-center gap-3">
+            <div className="p-2 bg-black text-white rounded-lg">
+                <ChalkboardTeacher size={24} weight="fill" />
+            </div>
+            <div>
+                <h1 className="text-2xl font-bold tracking-tight text-black">Cursos</h1>
+                <p className="text-sm text-gray-600">Gestiona tus cursos y contenido.</p>
+            </div>
+        </div>
         <CreateCourseForm />
       </div>
       
