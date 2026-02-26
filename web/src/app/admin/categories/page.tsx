@@ -14,22 +14,22 @@ export default async function CategoriesPage() {
   })
 
   return (
-    <div className="space-y-6">
+    <div className="space-y-6 bg-gray-50/30 min-h-full p-6 -m-6 rounded-xl">
       <div className="flex items-center gap-3">
-        <div className="p-2 bg-black text-white rounded-lg">
-            <Tag size={24} weight="fill" />
+        <div className="p-2.5 bg-teal-50 text-teal-600 border border-teal-100 rounded-lg shadow-sm">
+          <Tag size={24} weight="fill" />
         </div>
         <div>
-            <h1 className="text-2xl font-bold tracking-tight text-black">Gestión de Categorías</h1>
-            <p className="text-sm text-gray-600">Organiza los cursos en diferentes categorías.</p>
+          <h1 className="text-2xl font-bold tracking-tight text-gray-900">Gestión de Categorías</h1>
+          <p className="text-sm text-gray-500 mt-0.5">Organiza los cursos en diferentes categorías.</p>
         </div>
       </div>
-      
+
       <div className="grid gap-8 lg:grid-cols-3">
         <div className="lg:col-span-2 space-y-4">
           <CategoryList initialCategories={categories as any} />
         </div>
-        
+
         <div className="lg:col-span-1">
           <CreateCategoryForm />
         </div>

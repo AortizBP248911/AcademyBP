@@ -31,119 +31,118 @@ export default function UserList({ initialUsers }: UserListProps) {
   }
 
   return (
-    <div className="rounded-lg border bg-white shadow-sm overflow-hidden">
+    <div className="rounded-xl border border-gray-100 bg-white shadow-sm overflow-hidden">
       <div className="relative w-full overflow-auto">
         <table className="w-full caption-bottom text-sm">
-          <thead className="bg-gray-50 border-b">
+          <thead className="bg-gray-50/80 border-b border-gray-100">
             <tr>
-              <th className="h-auto px-4 py-3 text-left align-middle font-medium text-black">
+              <th className="h-auto px-4 py-3 text-left align-middle font-medium text-gray-700">
                 <div className="flex flex-col gap-2">
                   <div className="flex items-center gap-2">
-                    <User size={16} />
+                    <User size={16} className="text-gray-500" />
                     <span>Nombre</span>
                   </div>
                   <div className="relative">
-                    <MagnifyingGlass className="absolute left-2 top-1/2 -translate-y-1/2 text-gray-400" size={14} />
-                    <input 
-                      type="text" 
-                      placeholder="Filtrar..." 
-                      className="w-full h-8 pl-8 pr-2 rounded-md border border-gray-200 text-xs focus:outline-none focus:border-black transition-colors"
+                    <MagnifyingGlass className="absolute left-2.5 top-1/2 -translate-y-1/2 text-gray-400" size={14} />
+                    <input
+                      type="text"
+                      placeholder="Filtrar..."
+                      className="w-full h-9 pl-9 pr-3 rounded-lg border border-gray-200 text-xs focus:outline-none focus:border-teal-500 focus:ring-1 focus:ring-teal-500 transition-all bg-white"
                       value={filters.name}
                       onChange={(e) => handleFilterChange("name", e.target.value)}
                     />
                   </div>
                 </div>
               </th>
-              <th className="h-auto px-4 py-3 text-left align-middle font-medium text-black">
+              <th className="h-auto px-4 py-3 text-left align-middle font-medium text-gray-700">
                 <div className="flex flex-col gap-2">
                   <div className="flex items-center gap-2">
-                    <EnvelopeSimple size={16} />
+                    <EnvelopeSimple size={16} className="text-gray-500" />
                     <span>Correo</span>
                   </div>
                   <div className="relative">
-                    <MagnifyingGlass className="absolute left-2 top-1/2 -translate-y-1/2 text-gray-400" size={14} />
-                    <input 
-                      type="text" 
-                      placeholder="Filtrar..." 
-                      className="w-full h-8 pl-8 pr-2 rounded-md border border-gray-200 text-xs focus:outline-none focus:border-black transition-colors"
+                    <MagnifyingGlass className="absolute left-2.5 top-1/2 -translate-y-1/2 text-gray-400" size={14} />
+                    <input
+                      type="text"
+                      placeholder="Filtrar..."
+                      className="w-full h-9 pl-9 pr-3 rounded-lg border border-gray-200 text-xs focus:outline-none focus:border-teal-500 focus:ring-1 focus:ring-teal-500 transition-all bg-white"
                       value={filters.email}
                       onChange={(e) => handleFilterChange("email", e.target.value)}
                     />
                   </div>
                 </div>
               </th>
-              <th className="h-auto px-4 py-3 text-left align-middle font-medium text-black">
-                <div className="flex flex-col gap-2">
-                    <div className="flex items-center gap-2">
-                        <Shield size={16} />
-                        <span>Rol</span>
-                    </div>
-                    <div className="relative">
-                        <select
-                        className="w-full h-8 pl-2 pr-2 rounded-md border border-gray-200 text-xs focus:outline-none focus:border-black transition-colors bg-white cursor-pointer"
-                        value={filters.role}
-                        onChange={(e) => handleFilterChange("role", e.target.value)}
-                        >
-                            <option value="">Todos</option>
-                            <option value="ADMIN">Administrador</option>
-                            <option value="STUDENT">Estudiante</option>
-                        </select>
-                    </div>
-                </div>
-              </th>
-              <th className="h-auto px-4 py-3 text-left align-middle font-medium text-black">
+              <th className="h-auto px-4 py-3 text-left align-middle font-medium text-gray-700">
                 <div className="flex flex-col gap-2">
                   <div className="flex items-center gap-2">
-                    <Calendar size={16} />
+                    <Shield size={16} className="text-gray-500" />
+                    <span>Rol</span>
+                  </div>
+                  <div className="relative">
+                    <select
+                      className="w-full h-9 pl-3 pr-8 rounded-lg border border-gray-200 text-xs focus:outline-none focus:border-teal-500 focus:ring-1 focus:ring-teal-500 transition-all bg-white cursor-pointer appearance-none"
+                      value={filters.role}
+                      onChange={(e) => handleFilterChange("role", e.target.value)}
+                    >
+                      <option value="">Todos</option>
+                      <option value="ADMIN">Administrador</option>
+                      <option value="STUDENT">Estudiante</option>
+                    </select>
+                  </div>
+                </div>
+              </th>
+              <th className="h-auto px-4 py-3 text-left align-middle font-medium text-gray-700">
+                <div className="flex flex-col gap-2">
+                  <div className="flex items-center gap-2">
+                    <Calendar size={16} className="text-gray-500" />
                     <span>Registro</span>
                   </div>
                   <div className="relative">
-                    <MagnifyingGlass className="absolute left-2 top-1/2 -translate-y-1/2 text-gray-400" size={14} />
-                    <input 
-                      type="text" 
-                      placeholder="DD/MM/YYYY" 
-                      className="w-full h-8 pl-8 pr-2 rounded-md border border-gray-200 text-xs focus:outline-none focus:border-black transition-colors"
+                    <MagnifyingGlass className="absolute left-2.5 top-1/2 -translate-y-1/2 text-gray-400" size={14} />
+                    <input
+                      type="text"
+                      placeholder="DD/MM/YYYY"
+                      className="w-full h-9 pl-9 pr-3 rounded-lg border border-gray-200 text-xs focus:outline-none focus:border-teal-500 focus:ring-1 focus:ring-teal-500 transition-all bg-white"
                       value={filters.date}
                       onChange={(e) => handleFilterChange("date", e.target.value)}
                     />
                   </div>
                 </div>
               </th>
-              <th className="h-auto px-4 py-3 text-right align-middle font-medium text-black">
-                <div className="flex items-center justify-end gap-2 h-full pt-6">
-                    <Gear size={16} />
-                    <span>Acciones</span>
+              <th className="h-auto px-4 py-3 text-right align-middle font-medium text-gray-700">
+                <div className="flex items-center justify-end gap-2 h-full pt-7">
+                  <Gear size={16} className="text-gray-500" />
+                  <span>Acciones</span>
                 </div>
               </th>
             </tr>
           </thead>
-          <tbody className="divide-y">
+          <tbody className="divide-y divide-gray-100">
             {filteredUsers.map((user) => (
-              <tr key={user.id} className="transition-colors hover:bg-gray-50/50">
+              <tr key={user.id} className="transition-colors hover:bg-gray-50/80 group">
                 <td className="p-4 align-middle font-medium">
                   <div className="flex items-center gap-3">
                     {user.image ? (
-                       // eslint-disable-next-line @next/next/no-img-element
-                       <img src={user.image} alt={user.name || ""} className="w-8 h-8 rounded-full object-cover border border-gray-200" />
+                      // eslint-disable-next-line @next/next/no-img-element
+                      <img src={user.image} alt={user.name || ""} className="w-9 h-9 rounded-full object-cover border border-gray-200 shadow-sm" />
                     ) : (
-                       <div className="w-8 h-8 rounded-full bg-gray-100 border border-gray-200 flex items-center justify-center text-gray-600 text-xs font-semibold">
-                          {user.name?.charAt(0).toUpperCase()}
-                       </div>
+                      <div className="w-9 h-9 rounded-full bg-teal-50 border border-teal-100 flex items-center justify-center text-teal-700 text-sm font-bold shadow-sm">
+                        {user.name?.charAt(0).toUpperCase()}
+                      </div>
                     )}
-                    <span className="text-black">{user.name}</span>
+                    <span className="text-gray-900 font-semibold group-hover:text-teal-700 transition-colors">{user.name}</span>
                   </div>
                 </td>
-                <td className="p-4 align-middle text-black">{user.email}</td>
+                <td className="p-4 align-middle text-gray-600">{user.email}</td>
                 <td className="p-4 align-middle">
-                  <span className={`inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium ${
-                    user.role === 'ADMIN' 
-                      ? 'bg-purple-100 text-purple-800 border border-purple-200' 
-                      : 'bg-blue-100 text-blue-800 border border-blue-200'
-                  }`}>
+                  <span className={`inline-flex items-center rounded-md px-2.5 py-1 text-xs font-semibold ${user.role === 'ADMIN'
+                      ? 'bg-purple-50 text-purple-700 border border-purple-100'
+                      : 'bg-blue-50 text-blue-700 border border-blue-100'
+                    }`}>
                     {user.role === 'ADMIN' ? 'Administrador' : 'Estudiante'}
                   </span>
                 </td>
-                <td className="p-4 align-middle text-black">{new Date(user.createdAt).toLocaleDateString()}</td>
+                <td className="p-4 align-middle text-gray-500">{new Date(user.createdAt).toLocaleDateString()}</td>
                 <td className="p-4 align-middle text-right">
                   <UserActions userId={user.id} />
                 </td>
@@ -151,10 +150,11 @@ export default function UserList({ initialUsers }: UserListProps) {
             ))}
             {filteredUsers.length === 0 && (
               <tr>
-                <td colSpan={5} className="p-8 text-center text-gray-600">
-                  <div className="flex flex-col items-center justify-center gap-2">
-                    <Funnel size={32} className="text-gray-300" />
-                    <p>No se encontraron usuarios que coincidan con los filtros.</p>
+                <td colSpan={5} className="p-12 text-center text-gray-500 bg-gray-50/30">
+                  <div className="flex flex-col items-center justify-center gap-3">
+                    <Funnel size={36} className="text-gray-300" weight="light" />
+                    <p className="font-medium text-gray-700">No se encontraron usuarios</p>
+                    <p className="text-sm">Intenta ajustar los filtros de búsqueda.</p>
                   </div>
                 </td>
               </tr>

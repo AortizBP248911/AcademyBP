@@ -18,7 +18,7 @@ function SubmitButton() {
     <button
       type="submit"
       disabled={pending}
-      className="inline-flex items-center justify-center rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-black focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 bg-black text-white hover:bg-black/90 h-10 px-4 py-2 w-full mt-4"
+      className="inline-flex items-center justify-center rounded-lg text-sm font-medium ring-offset-background transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-teal-500 focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 bg-gray-900 text-white hover:bg-teal-600 h-10 px-4 py-2 w-full mt-4 shadow-sm"
     >
       {pending ? <CircleNotch className="mr-2 h-4 w-4 animate-spin" /> : <Plus className="mr-2 h-4 w-4" />}
       {pending ? "Inscribiendo..." : "Inscribir Estudiante"}
@@ -36,23 +36,25 @@ export default function EnrollmentForm({ users, courses }: EnrollmentFormProps) 
   const [state, formAction] = useActionState(createEnrollment, initialState)
 
   return (
-    <div className="rounded-lg border bg-white shadow-sm sticky top-6">
-      <div className="flex flex-col space-y-1.5 p-6 border-b bg-gray-50/50">
+    <div className="rounded-xl border border-gray-100 bg-white shadow-sm sticky top-6 overflow-hidden">
+      <div className="flex flex-col space-y-1.5 p-6 border-b border-gray-100 bg-gray-50/80">
         <div className="flex items-center gap-2">
-            <UserPlus size={20} className="text-black" />
-            <h3 className="text-lg font-semibold leading-none tracking-tight text-black">Nueva Inscripción</h3>
+          <div className="p-1.5 bg-teal-50 text-teal-600 rounded-md border border-teal-100 mr-1">
+            <UserPlus size={18} weight="fill" />
+          </div>
+          <h3 className="text-lg font-semibold leading-none tracking-tight text-gray-900">Nueva Inscripción</h3>
         </div>
-        <p className="text-sm text-gray-600 pl-7">Asignar un curso a un estudiante.</p>
+        <p className="text-sm text-gray-500 pt-1">Asignar un curso a un estudiante.</p>
       </div>
       <div className="p-6">
         <form action={formAction} className="space-y-4">
           <div className="space-y-2">
-            <label htmlFor="userId" className="text-sm font-medium">Estudiante</label>
-            <select 
-              id="userId" 
-              name="userId" 
+            <label htmlFor="userId" className="text-sm font-medium text-gray-700">Estudiante</label>
+            <select
+              id="userId"
+              name="userId"
               required
-              className="flex h-10 w-full rounded-md border border-gray-200 bg-white px-3 py-2 text-sm focus-visible:ring-2 focus-visible:ring-black text-black"
+              className="flex h-10 w-full rounded-lg border border-gray-200 bg-white px-3 py-2 text-sm focus-visible:border-teal-500 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-teal-500 transition-all text-gray-900 cursor-pointer"
             >
               <option value="">Seleccionar Estudiante...</option>
               {users.map(u => (
@@ -60,14 +62,14 @@ export default function EnrollmentForm({ users, courses }: EnrollmentFormProps) 
               ))}
             </select>
           </div>
-          
+
           <div className="space-y-2">
-            <label htmlFor="courseId" className="text-sm font-medium">Curso</label>
-            <select 
-              id="courseId" 
-              name="courseId" 
+            <label htmlFor="courseId" className="text-sm font-medium text-gray-700">Curso</label>
+            <select
+              id="courseId"
+              name="courseId"
               required
-              className="flex h-10 w-full rounded-md border border-gray-200 bg-white px-3 py-2 text-sm focus-visible:ring-2 focus-visible:ring-black text-black"
+              className="flex h-10 w-full rounded-lg border border-gray-200 bg-white px-3 py-2 text-sm focus-visible:border-teal-500 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-teal-500 transition-all text-gray-900 cursor-pointer"
             >
               <option value="">Seleccionar Curso...</option>
               {courses.map(c => (
@@ -75,7 +77,7 @@ export default function EnrollmentForm({ users, courses }: EnrollmentFormProps) 
               ))}
             </select>
           </div>
-          
+
           {state?.error && (
             <div className="p-3 rounded-md bg-red-50 text-red-500 text-sm border border-red-100">
               {state.error}
@@ -86,7 +88,7 @@ export default function EnrollmentForm({ users, courses }: EnrollmentFormProps) 
               {state.message}
             </div>
           )}
-          
+
           <SubmitButton />
         </form>
       </div>
