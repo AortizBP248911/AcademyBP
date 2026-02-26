@@ -5,6 +5,7 @@ import VideoPlayer from "@/components/video-player"
 import Link from "next/link"
 import { CheckCircle, Circle, File, ArrowLeft } from "@phosphor-icons/react/dist/ssr"
 import { completeLesson } from "@/actions/progress"
+import { getSignedDownloadUrl } from "@/lib/s3"
 
 export default async function CoursePlayerPage({ 
   params, 
@@ -60,6 +61,13 @@ export default async function CoursePlayerPage({
     where: { lessonId: activeLesson.id }
   }) : []
 
+  const attachmentsWithSignedUrls = await Promise.all(
+    attachments.map(async (att) => ({
+      ...att,
+      url: await getSignedDownloadUrl(att.url)
+    }))
+  )
+
   return (
     <div className="flex flex-col h-[calc(100vh-100px)]">
         <div className="mb-4 flex items-center gap-2">
@@ -98,6 +106,7 @@ export default async function CoursePlayerPage({
                         </div>
                         <form action={completeLesson.bind(null, activeLesson.id, course.id)}>
                             <button 
+                                type="submit"
                                 disabled={activeLesson.progress[0]?.completed}
                                 className={`px-6 py-2 rounded-full font-medium transition-all focus:ring-2 focus:ring-offset-2 focus:ring-black ${
                                     activeLesson.progress[0]?.completed 
@@ -114,14 +123,14 @@ export default async function CoursePlayerPage({
                         <p className="text-gray-700 whitespace-pre-wrap">{activeLesson.description}</p>
                     </div>
                     
-                    {attachments.length > 0 && (
+                    {attachmentsWithSignedUrls.length > 0 && (
                         <div className="border-t pt-6 mt-6">
                             <h3 className="font-semibold mb-4 flex items-center gap-2">
                                 <File size={20} />
                                 Adjuntos
                             </h3>
                             <div className="grid gap-3 sm:grid-cols-2">
-                                {attachments.map(file => (
+                                {attachmentsWithSignedUrls.map(file => (
                                 <a 
                                     key={file.id} 
                                     href={file.url} 

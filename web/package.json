@@ -16,6 +16,7 @@
     "@auth/prisma-adapter": "^2.11.1",
     "@aws-sdk/client-s3": "^3.998.0",
     "@aws-sdk/lib-storage": "^3.998.0",
+    "@aws-sdk/s3-request-presigner": "^3.998.0",
     "@phosphor-icons/react": "^2.1.10",
     "@prisma/client": "^5.22.0",
     "@radix-ui/react-dialog": "^1.1.15",

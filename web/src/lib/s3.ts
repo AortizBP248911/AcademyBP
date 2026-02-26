@@ -1,4 +1,5 @@
-import { S3Client, PutObjectCommand, DeleteObjectCommand } from "@aws-sdk/client-s3";
+import { S3Client, PutObjectCommand, DeleteObjectCommand, GetObjectCommand } from "@aws-sdk/client-s3";
+import { getSignedUrl } from "@aws-sdk/s3-request-presigner";
 
 const s3Client = new S3Client({
   endpoint: process.env.C2_ENDPOINT,
@@ -71,4 +72,34 @@ export async function deleteFromS3(fileUrl: string): Promise<boolean> {
         console.error("S3 Delete Error:", error);
         return false;
     }
+}
+
+export async function getSignedDownloadUrl(fileUrl: string): Promise<string> {
+  const bucket = process.env.C2_BUCKET_NAME || "academy-attachments";
+  
+  try {
+    const endpoint = process.env.C2_ENDPOINT?.replace(/\/$/, "");
+    const prefix = `${endpoint}/${bucket}/`;
+    
+    let key = fileUrl;
+    if (fileUrl.startsWith(prefix)) {
+      key = fileUrl.substring(prefix.length);
+    }
+    
+    // If key still contains full URL (mismatch prefix), try to extract purely based on bucket name if possible, 
+    // or assume the user might have stored relative paths in some cases (unlikely given uploadToS3).
+    // But let's stick to the prefix check which matches uploadToS3.
+
+    const command = new GetObjectCommand({
+      Bucket: bucket,
+      Key: key,
+    });
+
+    // Sign the URL, valid for 1 hour (3600 seconds)
+    const signedUrl = await getSignedUrl(s3Client, command, { expiresIn: 3600 });
+    return signedUrl;
+  } catch (error) {
+    console.error("S3 Signed URL Error:", error);
+    return fileUrl; // Fallback
+  }
 }

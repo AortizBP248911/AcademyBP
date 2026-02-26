@@ -4,6 +4,7 @@ import LessonEditForm from "./lesson-edit-form"
 import AttachmentList from "./attachment-list"
 import Link from "next/link"
 import { ArrowLeft } from "@phosphor-icons/react/dist/ssr"
+import { getSignedDownloadUrl } from "@/lib/s3"
 
 export default async function LessonPage({ params }: { params: Promise<{ courseId: string, lessonId: string }> }) {
   const { courseId, lessonId } = await params
@@ -13,6 +14,13 @@ export default async function LessonPage({ params }: { params: Promise<{ courseI
   })
 
   if (!lesson) notFound()
+
+  const attachmentsWithSignedUrls = await Promise.all(
+    lesson.attachments.map(async (att) => ({
+      ...att,
+      url: await getSignedDownloadUrl(att.url)
+    }))
+  )
 
   return (
     <div className="space-y-8">
@@ -35,7 +43,7 @@ export default async function LessonPage({ params }: { params: Promise<{ courseI
         </div>
         
         <div className="space-y-6">
-          <AttachmentList lessonId={lesson.id} courseId={courseId} attachments={lesson.attachments} />
+          <AttachmentList lessonId={lesson.id} courseId={courseId} attachments={attachmentsWithSignedUrls} />
         </div>
       </div>
     </div>
