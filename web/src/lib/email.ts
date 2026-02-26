@@ -2,6 +2,12 @@ import nodemailer from "nodemailer"
 import fs from "fs/promises"
 import path from "path"
 
+const getBaseUrl = () => {
+  if (process.env.NEXTAUTH_URL) return process.env.NEXTAUTH_URL
+  if (process.env.VERCEL_URL) return `https://${process.env.VERCEL_URL}`
+  return 'http://localhost:3000'
+}
+
 const transporter = nodemailer.createTransport({
   host: process.env.EMAIL_SERVER_HOST,
   port: Number(process.env.EMAIL_SERVER_PORT),
@@ -23,7 +29,7 @@ async function getTemplate(templateName: string) {
 
 export async function sendWelcomeEmail(email: string, name: string, password?: string) {
   let html = await getTemplate('welcome')
-  const baseUrl = process.env.NEXTAUTH_URL || 'http://localhost:3000'
+  const baseUrl = getBaseUrl()
   const logoUrl = `${baseUrl}/BP_Academy.png`
 
   if (html) {
@@ -51,7 +57,7 @@ export async function sendWelcomeEmail(email: string, name: string, password?: s
 }
 
 export async function sendCourseAssignedEmail(email: string, name: string, courseTitle: string) {
-  const baseUrl = process.env.NEXTAUTH_URL || 'http://localhost:3000'
+  const baseUrl = getBaseUrl()
   const logoUrl = `${baseUrl}/BP_Academy.png`
   let html = await getTemplate('course-assigned')
 
